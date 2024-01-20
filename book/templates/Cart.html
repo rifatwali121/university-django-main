@@ -1,0 +1,46 @@
+{% extends 'navbar.html' %} {% block navbar %}
+
+<table class="table my-5">
+  <thead>
+    <tr>
+      <th scope="col">Book ID</th>
+      <th scope="col">Book Cover</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart_data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>
+        <img
+          src="/media/{{ item.book.book_image }}"
+          width="100px"
+          height="100px"
+          alt="book img"
+        />
+      </td>
+      <td>{{ item.book.book_title }}</td>
+      <td>{{ item.book.book_author }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>tk {{ item.book.book_price|floatformat:2 }}</td>
+      <td>
+        <form action="{% url 'remove_from_cart' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="proid" value="{{ item.book.id }}" />
+          <button class="btn btn-danger" type="submit">Remove</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="float-right">
+  <p class="my-3 mx-3"><b>Total Price - BDT {{ total_price }}</b></p>
+  <a class="btn btn-outline-success my-3 mx-3" href="checkout">Make Payment</a>
+</div>
+
+{% endblock navbar %}

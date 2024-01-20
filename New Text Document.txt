@@ -1,0 +1,16 @@
+username: admin
+email: admin@uap.com
+pass: uapnai1234
+
+
+Rabbi: things done by me...
+Created a BoiBazar project using the command python-django create BoiBazar
+
+Migrated sqlite browser 
+
+created a Super user admin dashboard.
+
+Created an App called Book...
+inside book there's template>home.html 
+
+and inside BoiBazar project>> static>> images/files
